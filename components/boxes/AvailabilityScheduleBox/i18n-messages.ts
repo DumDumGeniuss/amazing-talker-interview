@@ -1,0 +1,26 @@
+export default {
+  en: {
+    availableTimes: 'Available times',
+    taipei: 'Taipei',
+    allTimesAreListedInYourTimeZone: '* All the timings listed are in your timezone: {cityName} ({timeZone})',
+    Sun: 'Sun',
+    Mon: 'Mon',
+    Tue: 'Tue',
+    Wed: 'Wed',
+    Thu: 'Thu',
+    Fri: 'Fri',
+    Sat: 'Sat',
+  },
+  'zh-TW': {
+    availableTimes: '授課時間',
+    taipei: '台北',
+    allTimesAreListedInYourTimeZone: '* 時間以 {cityName} ({timeZone}) 顯示',
+    Sun: '日',
+    Mon: '一',
+    Tue: '二',
+    Wed: '三',
+    Thu: '四',
+    Fri: '五',
+    Sat: '六',
+  },
+}
