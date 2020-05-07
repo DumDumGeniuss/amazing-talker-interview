@@ -46,7 +46,7 @@
             v-for="(time, idx) of scheduleDataGroupedByDay[dayOfWeek - 1]"
             :key="idx"
             :class="{
-              'time-slot': true,
+              'time-text': true,
               disabled: !time.available,
             }"
           >
@@ -92,7 +92,7 @@ export default {
   data() {
     return {
       currentDate: new Date(),
-      cityName: Intl.DateTimeFormat().resolvedOptions().timeZone.split('/')[1].toLowerCase(),
+      cityName: this.getCityName(),
     }
   },
 
@@ -104,7 +104,7 @@ export default {
       return isDateLeftBeforeDateRight(this.startDateOfWeek, this.currentDate)
     },
     scheduleDataGroupedByDay() {
-      return this.groupScheduleData(this.startDateOfWeek, this.scheduleData)
+      return this.groupScheduleDataByDay(this.startDateOfWeek, this.scheduleData)
     },
     dateRangeText() {
       const endDateOfWeek = addDaysToDate(this.startDateOfWeek, 6)
@@ -113,7 +113,7 @@ export default {
   },
 
   methods: {
-    groupScheduleData(startDateOfWeek, scheduleData) {
+    groupScheduleDataByDay(startDateOfWeek, scheduleData) {
       const scheduleMap = {
         0: [],
         1: [],
@@ -148,6 +148,14 @@ export default {
         })
       })
       return scheduleMap
+    },
+    getCityName() {
+      const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+      if (timeZone.indexOf('/') > -1) {
+        return timeZone.split('/')[1].toLowerCase()
+      } else {
+        return timeZone
+      }
     },
     getTimeText(date) {
       return formatDate(date, 'HH:mm')
@@ -267,7 +275,7 @@ export default {
       }
 
       .time-slot-list {
-        .time-slot {
+        .time-text {
           font-size: $at-font-size-xs;
           line-height: 20px;
           padding: 3px 0;
