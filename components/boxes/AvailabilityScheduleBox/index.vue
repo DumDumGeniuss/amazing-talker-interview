@@ -1,5 +1,5 @@
 <template>
-  <div class="at-availability-schedule-box" v-loading="loading">
+  <div class="at-availability-schedule-box">
     <h3 class="title">{{ $t('availableTimes') }}</h3>
     <div class="control-panel">
       <div class="left-section">
@@ -86,10 +86,6 @@ export default {
     scheduleData: {
       type: Object,
       default: null,
-    },
-    loading: {
-      type: Boolean,
-      default: false,
     },
   },
 

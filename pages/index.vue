@@ -4,7 +4,6 @@
       :start-date-of-week="startDateOfWeek"
       @start-date-of-week-update="handleStartDateOfWeekUpdate"
       :schedule-data="scheduleData"
-      :loading="isFetchingScheduleData"
     />
   </div>
 </template>
@@ -20,7 +19,6 @@ export default Vue.extend({
     return {
       startDateOfWeek: getStartDateOfWeek(new Date()),
       scheduleData: { available: [], booked: [] },
-      isFetchingScheduleData: false,
     }
   },
   methods: {
@@ -30,12 +28,9 @@ export default Vue.extend({
     },
     async fetchScheduleData(startDateOfWeek) {
       try {
-        // this.isFetchingScheduleData = true
         this.scheduleData = await fetchScheduleData(startDateOfWeek)
       } catch (error) {
         console.error(error)
-      } finally {
-        this.isFetchingScheduleData = false
       }
     },
   },
